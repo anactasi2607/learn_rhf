@@ -18,7 +18,6 @@ export const NotFound: FC = () => {
         px: 2,
       }}
     >
-      {/* Анимированный контейнер (если используешь framer-motion) */}
       <div>
         {/* Заголовок */}
         <Typography
