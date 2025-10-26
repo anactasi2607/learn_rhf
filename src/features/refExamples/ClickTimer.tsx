@@ -29,7 +29,7 @@ export const ClickTimer: FC = () => {
 
   return (
     <Box>
-      <Typography variant="h5" align="center" sx={{mb: 6}}>
+      <Typography variant="h5" align="center" sx={{mb: 4}}>
         Пример 1: Сбор статистики по кликам
       </Typography>
       <Box>
