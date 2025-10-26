@@ -19,6 +19,9 @@ export const Header: FC = () => {
           <Link href="/rhf" sx={{mx: 1}}>
             RHF
           </Link>
+          <Link href="/refs" sx={{mx: 1}}>
+            Refs
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>
