@@ -15,7 +15,7 @@ export const ProtectionWrapper: FC<PropsWithChildren<Props>> = ({children, useAu
   if (!isAuthenticated) {
     return (
       <Navigate
-        to="/signin"
+        to="/login"
         replace={true}
         state={{
           from: location.pathname,

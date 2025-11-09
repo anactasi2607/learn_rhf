@@ -1,6 +1,8 @@
 import {App} from 'app/App';
+import {LoginPage} from 'pages/login';
 import {MainPage} from 'pages/main';
 import {NotFoundPage} from 'pages/notFound';
+import {ProfilePage} from 'pages/profile';
 import {RefsPage} from 'pages/refs';
 import {RHFPage} from 'pages/rhf';
 import {createBrowserRouter} from 'react-router';
@@ -18,11 +20,23 @@ export const router = createBrowserRouter([
       },
       {
         path: 'rhf',
-        element: <RHFPage />,
+        element: (
+          <ProtectionWrapper useAuthStrategy={useContextAuthStrategy}>
+            <RHFPage />
+          </ProtectionWrapper>
+        ),
       },
       {
         path: 'refs',
-        element: <RefsPage />,
+        element: (
+          <ProtectionWrapper useAuthStrategy={useContextAuthStrategy}>
+            <RefsPage />
+          </ProtectionWrapper>
+        ),
+      },
+      {
+        path: 'login',
+        element: <LoginPage />,
       },
       {
         path: '*',
@@ -32,7 +46,7 @@ export const router = createBrowserRouter([
         path: 'profile',
         element: (
           <ProtectionWrapper useAuthStrategy={useContextAuthStrategy}>
-            <div>Сюда нельзя!</div>
+            <ProfilePage />
           </ProtectionWrapper>
         ),
       },

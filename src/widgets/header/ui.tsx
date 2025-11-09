@@ -1,7 +1,10 @@
 import {AppBar, Box, Link, Toolbar, Typography} from '@mui/material';
 import type {FC} from 'react';
+import {useAuthContext} from 'shared/lib/authContext';
 
 export const Header: FC = () => {
+  const {accessToken} = useAuthContext();
+
   return (
     <AppBar
       position="static"
@@ -16,12 +19,26 @@ export const Header: FC = () => {
           </Typography>
         </Link>
         <Box component="nav" sx={{ml: 'auto'}}>
-          <Link href="/rhf" sx={{mx: 1}}>
-            RHF
-          </Link>
-          <Link href="/refs" sx={{mx: 1}}>
-            Refs
-          </Link>
+          {accessToken && (
+            <Link href="/rhf" sx={{mx: 1}}>
+              RHF
+            </Link>
+          )}
+          {accessToken && (
+            <Link href="/refs" sx={{mx: 1}}>
+              Refs
+            </Link>
+          )}
+          {accessToken && (
+            <Link href="/profile" sx={{mx: 1}}>
+              Профиль
+            </Link>
+          )}
+          {!accessToken && (
+            <Link href="/login" sx={{mx: 1}}>
+              Регистрация
+            </Link>
+          )}
         </Box>
       </Toolbar>
     </AppBar>
