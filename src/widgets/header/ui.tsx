@@ -20,6 +20,11 @@ export const Header: FC = () => {
         </Link>
         <Box component="nav" sx={{ml: 'auto'}}>
           {accessToken && (
+            <Link href="/portal-showcase" sx={{mx: 1}}>
+              Portal
+            </Link>
+          )}
+          {accessToken && (
             <Link href="/rhf" sx={{mx: 1}}>
               RHF
             </Link>
