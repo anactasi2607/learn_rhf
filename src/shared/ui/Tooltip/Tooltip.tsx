@@ -13,6 +13,18 @@ type Props = {
 const TOOLTIP_MARGIN = 10;
 const ROOT_ELEMENT_ID = 'tooltip-root';
 
+const getRootElement = (): HTMLElement => {
+  let container = document.getElementById(ROOT_ELEMENT_ID);
+
+  if (!container) {
+    container = document.createElement('div');
+    container.id = ROOT_ELEMENT_ID;
+    document.body.appendChild(container);
+  }
+
+  return container;
+};
+
 const getTransform = (position: TooltipPosition): string => {
   switch (position) {
     case TooltipPosition.TOP:
@@ -48,7 +60,6 @@ export const Tooltip: FC<Props> = ({content, position = TooltipPosition.TOP, chi
   const [coords, setCoords] = useState({x: 0, y: 0});
   const arrowClassName = getArrowStyle(position);
   const containerRef = useRef<HTMLDivElement>(null);
-  const tooltipRootElement = document.getElementById(ROOT_ELEMENT_ID);
 
   const handleMouseEnter = () => {
     setIsVisible(true);
@@ -91,9 +102,7 @@ export const Tooltip: FC<Props> = ({content, position = TooltipPosition.TOP, chi
     }
   }, [isVisible, position]);
 
-  if (!tooltipRootElement) {
-    return <div ref={containerRef}>{children}</div>;
-  }
+  const rootElement = getRootElement();
 
   return (
     <>
@@ -120,7 +129,7 @@ export const Tooltip: FC<Props> = ({content, position = TooltipPosition.TOP, chi
               <div className={styles.tooltipContent}>{content}</div>
               <div className={`${styles.tooltipArrow} ${arrowClassName}`} />
             </div>,
-            tooltipRootElement
+            rootElement
           )}
       </div>
     </>

@@ -2,8 +2,26 @@ import type {FC} from 'react';
 import {Box, Button, Typography} from '@mui/material';
 import {Tooltip} from 'shared/ui/Tooltip/Tooltip';
 import {TooltipPosition} from 'shared/ui/Tooltip/TooltipPosition';
+import {ConfirmDialog, useConfirmDialog} from 'shared/ui/ConfirmDialog';
 
 export const Portal: FC = () => {
+  const {isOpen, dialogProps, showConfirmDialog, handleConfirm, handleCancel} = useConfirmDialog();
+
+  const handleDelete = async () => {
+    const confirmed = await showConfirmDialog({
+      title: 'Удалить элемент?',
+      description: 'Это действие нельзя отменить!',
+      confirmText: 'Удалить',
+      cancelText: 'Отмена',
+    });
+
+    if (confirmed) {
+      console.log('Элемент удален');
+    } else {
+      console.log('Удаление отменено');
+    }
+  };
+
   return (
     <>
       <Typography
@@ -48,6 +66,10 @@ export const Portal: FC = () => {
       >
         Модальное окно
       </Typography>
+      <Button variant="contained" onClick={handleDelete}>
+        Удалить
+      </Button>
+      <ConfirmDialog isOpen={isOpen} onConfirm={handleConfirm} onCancel={handleCancel} {...dialogProps} />
     </>
   );
 };
