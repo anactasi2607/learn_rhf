@@ -1,6 +1,6 @@
+import type {FC} from 'react';
 import {Typography} from '@mui/material';
 import {theme} from 'app/providers/MUI/theme';
-import type {FC} from 'react';
 
 export const Main: FC = () => {
   return (
@@ -13,7 +13,7 @@ export const Main: FC = () => {
         background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
-        mb: 2,
+        mb: 4,
         textAlign: 'center',
       }}
     >

@@ -2,6 +2,7 @@ import {App} from 'app/App';
 import {LoginPage} from 'pages/login';
 import {MainPage} from 'pages/main';
 import {NotFoundPage} from 'pages/notFound';
+import {PortalShowcasePage} from 'pages/portal';
 import {ProfilePage} from 'pages/profile';
 import {RefsPage} from 'pages/refs';
 import {RHFPage} from 'pages/rhf';
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <MainPage />,
+      },
+      {
+        path: 'portal-showcase',
+        element: <PortalShowcasePage />,
       },
       {
         path: 'rhf',
